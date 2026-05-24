@@ -3,16 +3,34 @@ import { ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "OmniFood",
+    title: "AplusClasses",
     description:
-      "A food delivery app that offers a variety of healthy meals with fast delivery options.",
-    imageUrl: "/projects/Omnifood.jpg",
-    tags: ["HTML", "CSS", "JavaScript"],
-    demoUrl: "https://elegant-bubblegum-be2075.netlify.app/",
-    githubUrl: "https://github.com/H-vishwa/Omnifood",
+      "A question paper generator application that automates the creation of customized exam papers and assessments. Helps educators efficiently generate varied question sets for testing and evaluation purposes.",
+    imageUrl: "/projects/InterviewIQ.png",
+    tags: ["JavaScript"],
+    demoUrl: "https://interviewiq-client-sw9d.onrender.com/",
+    githubUrl: "https://github.com/H-vishwa/InterviewIQ",
   },
   {
     id: 2,
+    title: "Welth AI",
+    description:
+      "An AI-powered finance platform with smart receipt scanning, budget planning, and automated insights for managing personal and business finances.",
+    imageUrl: "/projects/WelthAi.jpg",
+    tags: [
+      "Tailwind CSS",
+      "React",
+      "Next.js",
+      "AI",
+      "Supabase",
+      "Prisma",
+      "Inngest",
+    ],
+    demoUrl: "https://welth-ai-finance-platform-orpin.vercel.app/",
+    githubUrl: "https://github.com/H-vishwa/welth-ai-finance-platform",
+  },
+  {
+    id: 3,
     title: "IPrep AI",
     description:
       "An AI-powered interview preparation platform that helps users practice and improve their interview skills.",
@@ -30,7 +48,7 @@ const projects = [
     githubUrl: "https://github.com/H-vishwa/IPrep-AI",
   },
   {
-    id: 3,
+    id: 4,
     title: "Car Rental",
     description:
       "A comprehensive car rental application where users can browse, book, and manage car reservations with an admin panel.",
@@ -45,24 +63,6 @@ const projects = [
     ],
     demoUrl: "https://car-rental-six-ivory.vercel.app/",
     githubUrl: "https://github.com/H-vishwa/Car-Rental",
-  },
-  {
-    id: 4,
-    title: "Welth AI",
-    description:
-      "An AI-powered finance platform with smart receipt scanning, budget planning, and automated insights for managing personal and business finances.",
-    imageUrl: "/projects/WelthAi.jpg",
-    tags: [
-      "Tailwind CSS",
-      "React",
-      "Next.js",
-      "AI",
-      "Supabase",
-      "Prisma",
-      "Inngest",
-    ],
-    demoUrl: "https://welth-ai-finance-platform-orpin.vercel.app/",
-    githubUrl: "https://github.com/H-vishwa/welth-ai-finance-platform",
   },
 ];
 

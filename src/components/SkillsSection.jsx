@@ -64,6 +64,12 @@ const TechStackGrid = () => {
       color: "#D83B01",
       url: "https://www.microsoft.com/en-us/microsoft-365",
     },
+    {
+      name: "Redux",
+      icon: "https://img.icons8.com/color/96/redux.png",
+      color: "#764ABC",
+      url: "https://redux.js.org",
+    },
   ];
 
   useEffect(() => {
