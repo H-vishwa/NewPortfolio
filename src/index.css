@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -9,6 +10,9 @@
   --color-primary-foreground: hsl(var(--primary-foreground));
 
   --color-card: hsl(var(--card));
+
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-heading: "Archivo", sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
@@ -67,33 +71,33 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --background: 30 18% 93%; /* Warm beige #f0ede9 */
+    --foreground: 240 10% 4%; /* Charcoal Black #121212 */
 
-    --card: 0 0% 100%;
+    --card: 0 0% 100%; /* Pure white */
 
-    --primary: 250 47% 60%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 240 10% 4%; /* Charcoal Black */
+    --primary-foreground: 0 0% 98%;
 
-    --border: 214 32% 91%;
+    --border: 240 5.9% 90%; /* Subtle light grey border #EAEAEA */
   }
 
   .dark {
-    --background: 225 7% 11%;
-    --foreground: 213 31% 91%;
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 225 8% 15%;
+    --card: 240 10% 6%;
 
-    --primary: 250 65% 65%;
-    --primary-foreground: 213 31% 91%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 10% 4%;
 
-    --border: 217 33% 20%;
+    --border: 240 5.9% 15%;
   }
 
   * {
     @apply border-border;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+    scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
   }
 
   html {
@@ -102,8 +106,19 @@
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
-    font-family: "Stack Sans Notch", sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-sans);
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
   }
 }
 
@@ -134,66 +149,48 @@
 
 @utility text-glow {
   @apply relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 @utility card-hover {
-  @apply transition-all duration-1000 hover:scale-[1.02] hover:shadow-lg;
+  @apply transition-all duration-500 hover:shadow-xs hover:border-gray-400;
 }
 
 @utility gradient-border {
-  @apply relative rounded-md bg-background hover:border-[#474853];
-  background-clip: padding-box;
-  /* border: 1px solid #2f3037; */
+  @apply relative rounded-lg border border-border bg-card;
 }
 
 @utility cosmic-button {
-  @apply px-6 py-3 rounded-4xl bg-primary text-primary-foreground font-medium transition-all duration-300  hover:shadow-[0_0_10px_rgba(139,92,246,0.5)] hover:scale-105 active:scale-95;
+  @apply px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm transition-all duration-300 hover:opacity-90 active:scale-98 shadow-xs;
 }
 
 @utility star {
-  @apply absolute rounded-full bg-white;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+  @apply absolute rounded-full bg-foreground/15;
 }
 
 @utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  @apply absolute bg-linear-to-r from-foreground/15 via-foreground/5 to-transparent rounded-full;
 }
 
 .framework-card {
-  @apply w-24 h-24 shadow-xl hover:shadow-none border-border flex justify-center items-center opacity-0 transition-opacity duration-[0.4s] ease-[ease] select-none cursor-pointer relative p-6 rounded-xl  bg-background;
+  @apply w-24 h-24  flex justify-center items-center opacity-0 select-none cursor-pointer relative p-6 rounded-lg transition-all duration-500;
 }
 .framework-card:hover {
-  filter: drop-shadow(
-    0 0 1.5rem color-mix(in srgb, var(--glow-color) 40%, transparent)
-  );
-}
-.framework-card.active {
-  @apply opacity-100;
+  @apply  -translate-y-1;
 }
 
 .framework-card img {
-  @apply select-none w-[90%] h-[90%] object-contain;
-  filter: drop-shadow(
-    0 0 0.8rem color-mix(in srgb, var(--glow-color) 50%, transparent)
-  );
+  @apply select-none w-[80%] h-[80%] object-contain filter grayscale transition-all duration-300;
 }
-.framework-card:has(img) {
-  @apply cursor-pointer relative before:content-[""] before:absolute before:blur-[18px] before:z-[-1] before:opacity-0 before:transition-opacity before:duration-[3s] before:ease-[ease] before:will-change-[opacity] before:inset-[10%];
-}
-.framework-card:not(:has(img)):hover {
-  @apply transition-transform duration-100 ease-in-out;
-  transform: scale(0.9) translateZ(0);
-}
-.framework-card:hover::before {
-  @apply opacity-100 transition-opacity duration-200 ease-[ease];
+
+.framework-card:hover img {
+  @apply grayscale-0;
 }
 
 /* For Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -201,17 +198,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-/* Remove arrows (buttons) */
-::-webkit-scrollbar-button {
-  display: none;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #root {

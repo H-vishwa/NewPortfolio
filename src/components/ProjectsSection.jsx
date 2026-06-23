@@ -1,13 +1,28 @@
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ExternalLink, Github } from "lucide-react";
+
+// Register ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
     id: 1,
-    title: "AplusClasses",
+    title: "InterviewIQ.ai",
     description:
-      "A question paper generator application that automates the creation of customized exam papers and assessments. Helps educators efficiently generate varied question sets for testing and evaluation purposes.",
+      "InterviewIQ is an AI-powered mock interview platform that conducts realistic, customizable technical and behavioral interviews, scores responses, and delivers detailed feedback and improvement suggestions to help candidates prepare confidently for real interviews.",
     imageUrl: "/projects/InterviewIQ.png",
-    tags: ["JavaScript"],
+    tags: [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Tailwind CSS",
+      "Firebase",
+    ],
     demoUrl: "https://interviewiq-client-sw9d.onrender.com/",
     githubUrl: "https://github.com/H-vishwa/InterviewIQ",
   },
@@ -67,67 +82,106 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    // Animate heading and subtitle
+    gsap.to(".projects-header", {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".projects-header",
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    // Stagger animate project cards
+    gsap.to(".project-card", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".projects-grid",
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+    });
+  }, { scope: containerRef });
+
   return (
-    <section id="projects" className="py-24 px-4 relative">
+    <section ref={containerRef} id="projects" className="py-16 md:py-24 px-3 sm:px-4 relative bg-background">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Featured <span className="text-primary">Projects</span>
-        </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          A selection of projects showcasing my skills and experience in Web
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8  ">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 select-none">
+          <h2 className="projects-header text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tighter text-left leading-[0.95] opacity-0 -translate-y-8">
+            Featured <br /> Projects
+          </h2>
+          <a
+            href="https://github.com/H-vishwa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="projects-header flex items-center gap-3 text-xs uppercase font-bold tracking-widest text-foreground hover:opacity-75 transition-all duration-300 mt-4 md:mt-0">
+            View All Work
+            <span className="w-8 h-8 rounded-full border border-border flex items-center justify-center bg-card hover:border-foreground/30 transition-colors duration-300 text-sm font-semibold">
+              ↗
+            </span>
+          </a>
+        </div>
+
+        {/* Project Cards Grid */}
+        <div className="projects-grid grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-10 md:gap-y-12 justify-items-center">
           {projects.map((project, key) => (
             <div
-              className="group bg-background gradient-border rounded-lg overflow-hidden shadow-2xl card-hover md:w-[400px] "
+              className="project-card group cursor-pointer opacity-0 translate-y-12 w-full text-left"
               key={key}>
-              <div className=" overflow-hidden">
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full overflow-hidden rounded-2xl bg-foreground/5 border border-border/10 mb-4">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-110"
+                  className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  loading="lazy"
                 />
-              </div>
-              <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span className="px-3 py-1 text-xs shadow-2xs font-medium rounded-full bg-background">
-                      {tag}
-                    </span>
-                  ))}
+              </a>
+              <div className="flex items-start justify-between px-1">
+                <div>
+                  <h3 className="text-lg font-bold uppercase tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mt-1.5">
+                    {project.tags.slice(0, 3).join(" / ")}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {project.description}
-                </p>
-                <div className="flex justify-center items-center">
-                  <div className="flex space-x-3 ">
-                    <a
-                      href={project.demoUrl}
-                      className="p-3 rounded-full text-muted-foreground/80 hover:text-primary hover:bg-primary/10 transition-colors duration-300"
-                      target="_blank">
-                      <ExternalLink size={20} />
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      className="p-3 rounded-full text-muted-foreground/80 hover:text-primary hover:bg-primary/10 transition-colors duration-300"
-                      target="_blank">
-                      <Github size={20} />
-                    </a>
-                  </div>
+                <div className="flex gap-2">
+                  <a
+                    href={project.githubUrl}
+                    className="text-foreground/40 hover:text-foreground transition-colors duration-300 p-1.5 border border-border rounded-full bg-card hover:border-gray-400"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Source Code">
+                    <Github size={14} />
+                  </a>
+                  <a
+                    href={project.demoUrl}
+                    className="text-foreground/40 hover:text-foreground transition-colors duration-300 p-1.5 border border-border rounded-full bg-card hover:border-gray-400"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Live Demo">
+                    <ExternalLink size={14} />
+                  </a>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <a
-            href="https://github.com/H-vishwa"
-            target="_blank"
-            className="cosmic-button w-fit flex items-center mx-auto gap-2">
-            Check My Github <ExternalLink size={16} className="ml-2" />
-          </a>
         </div>
       </div>
     </section>
