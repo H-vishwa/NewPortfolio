@@ -31,7 +31,7 @@ const projects = [
     title: "Welth AI",
     description:
       "An AI-powered finance platform with smart receipt scanning, budget planning, and automated insights for managing personal and business finances.",
-    imageUrl: "/projects/WelthAi.jpg",
+    imageUrl: "/projects/WelthAi.png",
     tags: [
       "Tailwind CSS",
       "React",
@@ -49,7 +49,7 @@ const projects = [
     title: "IPrep AI",
     description:
       "An AI-powered interview preparation platform that helps users practice and improve their interview skills.",
-    imageUrl: "/projects/IPrepAI.jpg",
+    imageUrl: "/projects/IPrepAI.png",
     tags: [
       "Tailwind CSS",
       "JavaScript",
@@ -59,7 +59,7 @@ const projects = [
       "React",
       "Node.js",
     ],
-    demoUrl: "https://sparkly-tanuki-37ddcb.netlify.app/",
+    demoUrl: "https://iprep-ai-1.onrender.com/",
     githubUrl: "https://github.com/H-vishwa/IPrep-AI",
   },
   {
