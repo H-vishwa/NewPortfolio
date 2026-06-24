@@ -67,14 +67,18 @@ const NavBar = () => {
     });
   }, { scope: containerRef });
 
-  // Custom smooth scroll handler using GSAP ScrollTo
+  // Custom smooth scroll handler using GSAP ScrollTo / Lenis
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setIsMenuOpen(false);
 
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (window.lenis) {
+      window.lenis.scrollTo(href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
