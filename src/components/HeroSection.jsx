@@ -167,7 +167,7 @@ const HeroSection = () => {
         {/* Centered Profile Image Wrapper (starts smaller: w-32 h-44 / w-40 h-56) */}
         <div className="hero-profile-container absolute top-[60%] sm:top-[68%] md:top-3/4 left-1/2 w-24 h-32 sm:w-32 sm:h-44 md:w-50 md:h-65 z-20 opacity-0">
           <img
-            src="/ME.jpeg"
+            src="/ME.png"
             alt="Himanshu Kumar"
             className="w-full h-full object-cover rounded-2xl filter grayscale contrast-[1.10]"
             loading="eager"
