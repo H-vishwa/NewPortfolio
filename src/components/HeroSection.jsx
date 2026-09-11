@@ -48,7 +48,6 @@ const HeroSection = () => {
       "-=0.4"
     );
 
-
     gsap.to(".about-left", {
       opacity: 1,
       x: 0,
@@ -123,8 +122,8 @@ const HeroSection = () => {
           invalidateOnRefresh: true,
           onRefresh: () => {
             calculateDeltas();
-          }
-        }
+          },
+        },
       });
 
       scrollTl.to(heroImg, {
@@ -137,10 +136,14 @@ const HeroSection = () => {
       });
 
       // Gradually remove grayscale filter as it scrolls down to the About section
-      scrollTl.to(heroImg.querySelector("img"), {
-        filter: "grayscale(0%) contrast(1.0)",
-        ease: "power1.inOut",
-      }, 0);
+      scrollTl.to(
+        heroImg.querySelector("img"),
+        {
+          filter: "grayscale(0%) contrast(1.0)",
+          ease: "power1.inOut",
+        },
+        0
+      );
     };
 
     // Delay run to let Vite components render fully
@@ -150,9 +153,25 @@ const HeroSection = () => {
 
   const handleScrollTo = (e, target) => {
     e.preventDefault();
-    const element = document.querySelector(target);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (window.lenis) {
+      window.lenis.scrollTo(target, {
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        onComplete: () => {
+          if (target === "#contact") {
+            gsap.fromTo(
+              ".contact-info",
+              { scale: 0.98 },
+              { scale: 1, duration: 0.5, ease: "power2.out" }
+            );
+          }
+        },
+      });
+    } else {
+      const element = document.querySelector(target);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -167,10 +186,12 @@ const HeroSection = () => {
         {/* Centered Profile Image Wrapper (starts smaller: w-32 h-44 / w-40 h-56) */}
         <div className="hero-profile-container absolute top-[60%] sm:top-[68%] md:top-3/4 left-1/2 w-24 h-32 sm:w-32 sm:h-44 md:w-50 md:h-65 z-20 opacity-0">
           <img
-            src="/ME.png"
+            src="/ME.webp"
             alt="Himanshu Kumar"
             className="w-full h-full object-cover rounded-2xl filter grayscale contrast-[1.10]"
             loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
 
@@ -263,7 +284,10 @@ const HeroSection = () => {
                 Focused on building clean frontends, secure authentication flows, and scalable APIs that solve real-world digital problems.
               </p>
               <div className="flex flex-col gap-2 pt-2">
-                <a href="#contact" className="cosmic-button uppercase tracking-wider text-xs font-semibold px-6 py-2.5 text-center">
+                <a
+                  href="#contact"
+                  onClick={(e) => handleScrollTo(e, "#contact")}
+                  className="cosmic-button uppercase tracking-wider text-xs font-semibold px-6 py-2.5 text-center">
                   Hire Me
                 </a>
                 <a

@@ -13,7 +13,7 @@ const projects = [
     title: "InterviewIQ.ai",
     description:
       "InterviewIQ is an AI-powered mock interview platform that conducts realistic, customizable technical and behavioral interviews, scores responses, and delivers detailed feedback and improvement suggestions to help candidates prepare confidently for real interviews.",
-    imageUrl: "/projects/InterviewIQ.png",
+    imageUrl: "/projects/InterviewIQ.webp",
     tags: [
       "JavaScript",
       "React",
@@ -31,7 +31,7 @@ const projects = [
     title: "Welth AI",
     description:
       "An AI-powered finance platform with smart receipt scanning, budget planning, and automated insights for managing personal and business finances.",
-    imageUrl: "/projects/WelthAi.png",
+    imageUrl: "/projects/WelthAi.webp",
     tags: [
       "Tailwind CSS",
       "React",
@@ -49,7 +49,7 @@ const projects = [
     title: "IPrep AI",
     description:
       "An AI-powered interview preparation platform that helps users practice and improve their interview skills.",
-    imageUrl: "/projects/IPrepAI.png",
+    imageUrl: "/projects/IPrepAI.webp",
     tags: [
       "Tailwind CSS",
       "JavaScript",
@@ -67,7 +67,7 @@ const projects = [
     title: "Car Rental",
     description:
       "A comprehensive car rental application where users can browse, book, and manage car reservations with an admin panel.",
-    imageUrl: "/projects/CarRental.png",
+    imageUrl: "/projects/CarRental.webp",
     tags: [
       "JavaScript",
       "MongoDB",
@@ -150,6 +150,7 @@ const ProjectsSection = () => {
                   alt={project.title}
                   className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                   loading="lazy"
+                  decoding="async"
                 />
               </a>
               <div className="flex items-start justify-between px-1">
