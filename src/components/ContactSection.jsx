@@ -107,7 +107,7 @@ const ContactSection = () => {
 
         {/* Right Column: Full Bleed on desktop, neat responsive card on mobile */}
         <div className="contact-image-container relative group overflow-hidden px-4 sm:px-6 md:px-0 flex w-full">
-          <div className="relative w-full h-full min-h-[300px] sm:min-h-[360px] md:min-h-[480px]  md:rounded-none md:rounded-l-3xl border md:border-y-0 md:border-l border-border/80 bg-card overflow-hidden shadow-sm">
+          <div className="relative w-full h-full min-h-[300px] sm:min-h-[360px] md:min-h-[480px]  border md:border-y-0 md:border-l border-border/80 bg-card overflow-hidden shadow-sm">
             <img
               src="/contact.webp"
               alt="Workspace and Development Setup"
