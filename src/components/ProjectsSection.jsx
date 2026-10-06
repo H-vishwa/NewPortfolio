@@ -1,85 +1,13 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { projectsData } from "../data/projects";
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-  {
-    id: 1,
-    title: "InterviewIQ.ai",
-    description:
-      "InterviewIQ is an AI-powered mock interview platform that conducts realistic, customizable technical and behavioral interviews, scores responses, and delivers detailed feedback and improvement suggestions to help candidates prepare confidently for real interviews.",
-    imageUrl: "/projects/InterviewIQ.webp",
-    tags: [
-      "JavaScript",
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Tailwind CSS",
-      "Firebase",
-    ],
-    demoUrl: "https://interviewiq-client-sw9d.onrender.com/",
-    githubUrl: "https://github.com/H-vishwa/InterviewIQ",
-  },
-  {
-    id: 2,
-    title: "Welth AI",
-    description:
-      "An AI-powered finance platform with smart receipt scanning, budget planning, and automated insights for managing personal and business finances.",
-    imageUrl: "/projects/WelthAi.webp",
-    tags: [
-      "Tailwind CSS",
-      "React",
-      "Next.js",
-      "AI",
-      "Supabase",
-      "Prisma",
-      "Inngest",
-    ],
-    demoUrl: "https://welth-ai-finance-platform-orpin.vercel.app/",
-    githubUrl: "https://github.com/H-vishwa/welth-ai-finance-platform",
-  },
-  {
-    id: 3,
-    title: "IPrep AI",
-    description:
-      "An AI-powered interview preparation platform that helps users practice and improve their interview skills.",
-    imageUrl: "/projects/IPrepAI.webp",
-    tags: [
-      "Tailwind CSS",
-      "JavaScript",
-      "AI",
-      "MongoDB",
-      "Express.js",
-      "React",
-      "Node.js",
-    ],
-    demoUrl: "https://iprep-ai-1.onrender.com/",
-    githubUrl: "https://github.com/H-vishwa/IPrep-AI",
-  },
-  {
-    id: 4,
-    title: "Car Rental",
-    description:
-      "A comprehensive car rental application where users can browse, book, and manage car reservations with an admin panel.",
-    imageUrl: "/projects/CarRental.webp",
-    tags: [
-      "JavaScript",
-      "MongoDB",
-      "Express.js",
-      "React",
-      "Node.js",
-      "Tailwind CSS",
-    ],
-    demoUrl: "https://car-rental-six-ivory.vercel.app/",
-    githubUrl: "https://github.com/H-vishwa/Car-Rental",
-  },
-];
 
 const ProjectsSection = () => {
   const containerRef = useRef(null);
@@ -115,72 +43,115 @@ const ProjectsSection = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} id="projects" className="py-16 md:py-24 px-3 sm:px-4 relative bg-background">
+    <section ref={containerRef} id="projects" className="py-16 sm:py-20 md:py-24 px-4 relative bg-background">
       <div className="container mx-auto max-w-5xl">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 select-none">
-          <h2 className="projects-header text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tighter text-left leading-[0.95] opacity-0 -translate-y-8">
-            Featured <br /> Projects
-          </h2>
-          <a
-            href="https://github.com/H-vishwa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="projects-header flex items-center gap-3 text-xs uppercase font-bold tracking-widest text-foreground hover:opacity-75 transition-all duration-300 mt-4 md:mt-0">
-            View All Work
-            <span className="w-8 h-8 rounded-full border border-border flex items-center justify-center bg-card hover:border-foreground/30 transition-colors duration-300 text-sm font-semibold">
-              ↗
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 select-none">
+          <div className="text-left">
+            <span className="projects-header inline-block text-xs uppercase font-bold tracking-widest text-foreground/50 opacity-0 -translate-y-6 mb-2">
+              Portfolio &amp; Selected Works
             </span>
-          </a>
+            <h2 className="projects-header text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tighter leading-[0.95] opacity-0 -translate-y-6">
+              Featured <br className="hidden sm:inline" /> Projects
+            </h2>
+          </div>
+
+          {/* Conditional "View All Work" link: ONLY shown if projects count exceeds 4 */}
+          {projectsData.length > 4 && (
+            <a
+              href="https://github.com/H-vishwa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="projects-header flex items-center gap-3 text-xs uppercase font-bold tracking-widest text-foreground hover:opacity-75 transition-all duration-300 mt-4 md:mt-0">
+              View All Work
+              <span className="w-8 h-8 rounded-full border border-border flex items-center justify-center bg-card hover:border-foreground/30 transition-colors duration-300 text-sm font-semibold">
+                ↗
+              </span>
+            </a>
+          )}
         </div>
 
         {/* Project Cards Grid */}
-        <div className="projects-grid grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-10 md:gap-y-12 justify-items-center">
-          {projects.map((project, key) => (
+        <div className="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 justify-items-center">
+          {projectsData.map((project) => (
             <div
-              className="project-card group cursor-pointer opacity-0 translate-y-12 w-full text-left"
-              key={key}>
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full overflow-hidden rounded-2xl bg-foreground/5 border border-border/10 mb-4">
-                <img
-                  src={project.imageUrl}
-                  alt={project.title}
-                  className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-              <div className="flex items-start justify-between px-1">
-                <div>
-                  <h3 className="text-lg font-bold uppercase tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mt-1.5">
-                    {project.tags.slice(0, 3).join(" / ")}
+              className="project-card group rounded-2xl border border-border/80 bg-card p-4 sm:p-5 flex flex-col justify-between opacity-0 translate-y-12 w-full text-left transition-all duration-300 hover:border-foreground/35 hover:shadow-lg"
+              key={project.id}>
+              
+              <div>
+                {/* Image linking to Case Study */}
+                <Link
+                  to={`/projects/${project.slug}`}
+                  className="block w-full overflow-hidden rounded-xl bg-foreground/5 border border-border/40 mb-4 relative"
+                  title={`View ${project.title} case study`}>
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-xs text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>Case Study</span>
+                    <ArrowUpRight size={11} />
+                  </div>
+                </Link>
+
+                {/* Title & Description */}
+                <div className="mb-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <Link
+                      to={`/projects/${project.slug}`}
+                      className="text-lg sm:text-xl font-bold uppercase tracking-tight text-foreground hover:text-primary transition-colors duration-300">
+                      {project.title}
+                    </Link>
+                  </div>
+                  <p className="text-xs sm:text-sm text-foreground/75 leading-relaxed mt-2 line-clamp-2">
+                    {project.description}
                   </p>
                 </div>
-                <div className="flex gap-2">
+
+                {/* Tech Stack Chips */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-foreground/5 text-foreground/70 border border-border/40">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bottom labeled action buttons */}
+              <div className="flex items-center justify-between pt-3 border-t border-border/50 gap-2">
+                <Link
+                  to={`/projects/${project.slug}`}
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-foreground/80 hover:text-foreground transition-colors py-1.5">
+                  <span>Case Study</span>
+                  <ArrowUpRight size={13} />
+                </Link>
+
+                <div className="flex items-center gap-2">
                   <a
                     href={project.githubUrl}
-                    className="text-foreground/40 hover:text-foreground transition-colors duration-300 p-1.5 border border-border rounded-full bg-card hover:border-gray-400"
                     target="_blank"
                     rel="noopener noreferrer"
-                    title="Source Code">
-                    <Github size={14} />
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card text-foreground/80 hover:text-foreground text-xs font-semibold uppercase tracking-wider transition-colors hover:bg-foreground/5">
+                    <Github size={13} />
+                    <span>GitHub</span>
                   </a>
                   <a
                     href={project.demoUrl}
-                    className="text-foreground/40 hover:text-foreground transition-colors duration-300 p-1.5 border border-border rounded-full bg-card hover:border-gray-400"
                     target="_blank"
                     rel="noopener noreferrer"
-                    title="Live Demo">
-                    <ExternalLink size={14} />
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-foreground text-background hover:opacity-90 text-xs font-semibold uppercase tracking-wider transition-opacity shadow-2xs">
+                    <ExternalLink size={13} />
+                    <span>Live Demo</span>
                   </a>
                 </div>
               </div>
+
             </div>
           ))}
         </div>

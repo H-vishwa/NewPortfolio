@@ -1,5 +1,6 @@
 import ContactSection from "../components/ContactSection";
 import ExperienceSection from "../components/ExperienceSection";
+import CertificationsSection from "../components/CertificationsSection";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
 import NavBar from "../components/NavBar";
@@ -21,6 +22,7 @@ const Home = () => {
         <HeroSection />
         <SkillsSection />
         <ExperienceSection />
+        <CertificationsSection />
         <ProjectsSection />
         <ContactSection />
       </main>

@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import ProjectCaseStudy from "./pages/ProjectCaseStudy";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,8 +49,10 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route index element={<Home />} />
+        <Route path="/projects/:slug" element={<ProjectCaseStudy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
