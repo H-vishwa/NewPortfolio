@@ -94,9 +94,9 @@ const ExperienceSection = () => {
       className="py-16 sm:py-20 md:py-24 px-4 relative bg-background select-none">
       <div className="w-full max-w-5xl mx-auto">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 select-none gap-3">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-14 select-none gap-3">
           <div>
-            <span className="experience-header-item inline-block mr-70 text-xs uppercase font-bold tracking-widest text-foreground/50 mb-2">
+            <span className="experience-header-item inline-block text-xs uppercase font-bold tracking-widest text-foreground/50 mb-2">
               Career &amp; Background
             </span>
             <h2 className="experience-header-item text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tighter text-left leading-[0.95]">
@@ -110,7 +110,7 @@ const ExperienceSection = () => {
         </div>
 
         {/* 1. Work Experience Sub-section */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-10 sm:mb-16">
           <div className="experience-header-item flex items-center gap-2.5 mb-5 text-left">
             <span className="p-1.5 rounded-lg bg-foreground/5 text-foreground/80 border border-border/60 shrink-0">
               <Briefcase size={14} />
@@ -125,7 +125,7 @@ const ExperienceSection = () => {
             {workExperiences.map((item) => (
               <div
                 key={item.id}
-                className="experience-compact-card rounded-2xl border border-border/80 bg-card p-5 sm:p-7 transition-all duration-300 shadow-2xs hover:border-foreground/30">
+                className="experience-compact-card rounded-2xl border border-border/80 bg-card p-4 sm:p-7 transition-all duration-300 shadow-2xs hover:border-foreground/30">
                 {/* Header row */}
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
                   <div>
@@ -142,7 +142,7 @@ const ExperienceSection = () => {
                       </span>
                     </div>
 
-                    <h3 className="text-lg sm:text-xl font-bold tracking-tight text-foreground">
+                    <h3 className="text-base sm:text-xl font-bold tracking-tight text-foreground">
                       {item.role}
                     </h3>
                     <div className="text-xs sm:text-sm font-semibold text-foreground/75 flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
@@ -155,10 +155,10 @@ const ExperienceSection = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 w-full sm:w-auto">
                     <button
                       onClick={() => setFreelanceExpanded(!freelanceExpanded)}
-                      className="px-3.5 py-1.5 rounded-lg border border-border bg-foreground/5 hover:bg-foreground/10 text-foreground text-xs font-semibold uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer">
+                      className="w-full sm:w-auto justify-center px-3.5 py-2 sm:py-1.5 rounded-lg border border-border bg-foreground/5 hover:bg-foreground/10 text-foreground text-xs font-semibold uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer">
                       <span>{freelanceExpanded ? "Hide Details" : "Expand Details"}</span>
                       <ChevronDown
                         size={14}
@@ -301,13 +301,13 @@ const ExperienceSection = () => {
             onWheel={(e) => e.stopPropagation()}
             onTouchMove={(e) => e.stopPropagation()}
             data-lenis-prevent="true"
-            className="relative w-full max-w-2xl max-h-[88vh] overflow-y-auto overscroll-contain modal-scrollable rounded-2xl border border-border bg-card p-5 sm:p-7 md:p-8 shadow-2xl text-left animate-in fade-in zoom-in-95 duration-200">
+            className="relative w-full max-w-2xl max-h-[90dvh] overflow-y-auto overscroll-contain modal-scrollable rounded-2xl border border-border bg-card p-4 sm:p-7 md:p-8 shadow-2xl text-left animate-in fade-in zoom-in-95 duration-200">
             {/* Close Button */}
             <button
               onClick={() => setSelectedItem(null)}
               aria-label="Close modal"
-              className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 p-1.5 sm:p-2 rounded-full border border-border text-foreground/60 hover:text-foreground hover:bg-foreground/5 transition-colors cursor-pointer focus:outline-none z-10 bg-card/80">
-              <X size={16} className="sm:w-[18px] sm:h-[18px]" />
+              className="absolute top-3 right-3 sm:top-5 sm:right-5 p-2 rounded-full border border-border text-foreground/60 hover:text-foreground hover:bg-foreground/5 transition-colors cursor-pointer focus:outline-none z-10 bg-card/90">
+              <X size={17} />
             </button>
 
             {/* Modal Header */}

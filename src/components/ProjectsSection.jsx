@@ -46,12 +46,12 @@ const ProjectsSection = () => {
     <section ref={containerRef} id="projects" className="py-16 sm:py-20 md:py-24 px-4 relative bg-background">
       <div className="container mx-auto max-w-5xl">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 select-none">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 select-none">
           <div className="text-left">
             <span className="projects-header inline-block text-xs uppercase font-bold tracking-widest text-foreground/50 opacity-0 -translate-y-6 mb-2">
               Portfolio &amp; Selected Works
             </span>
-            <h2 className="projects-header text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tighter leading-[0.95] opacity-0 -translate-y-6">
+            <h2 className="projects-header text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tighter leading-[0.95] opacity-0 -translate-y-6">
               Featured <br className="hidden sm:inline" /> Projects
             </h2>
           </div>
@@ -72,7 +72,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Project Cards Grid */}
-        <div className="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 justify-items-center">
+        <div className="projects-grid grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 justify-items-center">
           {projectsData.map((project) => (
             <div
               className="project-card group rounded-2xl border border-border/80 bg-card p-4 sm:p-5 flex flex-col justify-between opacity-0 translate-y-12 w-full text-left transition-all duration-300 hover:border-foreground/35 hover:shadow-lg"
@@ -124,32 +124,32 @@ const ProjectsSection = () => {
               </div>
 
               {/* Bottom labeled action buttons */}
-              <div className="flex items-center justify-between pt-3 border-t border-border/50 gap-2">
-                <Link
-                  to={`/projects/${project.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-foreground/80 hover:text-foreground transition-colors py-1.5">
-                  <span>Case Study</span>
-                  <ArrowUpRight size={13} />
-                </Link>
+              <div className="flex items-center justify-between pt-3 border-t border-border/50 gap-1.5 xs:gap-2">
 
-                <div className="flex items-center gap-2">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card text-foreground/80 hover:text-foreground text-xs font-semibold uppercase tracking-wider transition-colors hover:bg-foreground/5">
-                    <Github size={13} />
-                    <span>GitHub</span>
-                  </a>
+                <div className="flex items-center gap-1.5 xs:gap-2 shrink-0">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 xs:gap-1.5 px-2 xs:px-2.5 sm:px-3 py-1.5 rounded-lg border border-border bg-card text-foreground/80 hover:text-foreground text-[10px] xs:text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-colors hover:bg-foreground/5 shrink-0">
+                  <Github size={12} className="shrink-0" />
+                  <span className="hidden md:block">GitHub</span>
+                </a>
                   <a
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-foreground text-background hover:opacity-90 text-xs font-semibold uppercase tracking-wider transition-opacity shadow-2xs">
-                    <ExternalLink size={13} />
-                    <span>Live Demo</span>
+                    className="inline-flex items-center gap-1 xs:gap-1.5 px-2 xs:px-2.5 sm:px-3 py-1.5 rounded-lg border border-border bg-foreground text-background hover:opacity-90 text-[10px] xs:text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-opacity shadow-2xs shrink-0">
+                    <ExternalLink size={12} className="shrink-0" />
+                    <span className="hidden md:block">Live Demo</span>
                   </a>
                 </div>
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className="inline-flex items-center gap-1 xs:gap-1.5 px-2 xs:px-2.5 sm:px-3 py-1.5 rounded-lg border border-border bg-card hover:bg-foreground/5 text-foreground/80 hover:text-foreground text-[10px] xs:text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-colors shrink-0">
+                    <span>Case Study</span>
+                    <ArrowUpRight size={12} className="shrink-0" />
+                  </Link>
               </div>
 
             </div>

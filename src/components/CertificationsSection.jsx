@@ -256,7 +256,7 @@ const CertificationsSection = () => {
             <span className="cert-heading inline-block text-xs uppercase font-bold tracking-widest text-foreground/50 mb-2">
               Credentials &amp; Proof of Work
             </span>
-            <h2 className="cert-heading text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tighter leading-[0.95]">
+            <h2 className="cert-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tighter leading-[0.95]">
               Certifications
             </h2>
           </div>
@@ -266,9 +266,9 @@ const CertificationsSection = () => {
           </p>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2 mb-8 sm:mb-10 text-left">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-foreground/45 mr-1 flex items-center gap-1.5">
+        {/* Category Filter Tabs - horizontally scrollable on mobile */}
+        <div className="flex items-center gap-2 mb-6 sm:mb-10 text-left overflow-x-auto pb-2 sm:pb-0 sm:flex-wrap no-scrollbar">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-foreground/45 mr-1 flex items-center gap-1.5 shrink-0">
             <Filter size={12} />
             <span>Category:</span>
           </span>
@@ -284,7 +284,7 @@ const CertificationsSection = () => {
               <button
                 key={cat}
                 onClick={() => handleSelectCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
                   selectedCategory === cat
                     ? "bg-foreground text-background shadow-xs font-bold"
                     : "bg-card border border-border/80 text-foreground/70 hover:text-foreground hover:border-foreground/40"
@@ -312,7 +312,7 @@ const CertificationsSection = () => {
         </div>
 
         {/* Certifications Grouped by Category */}
-        <div className="cert-list space-y-8 sm:space-y-10">
+        <div className="cert-list space-y-6 sm:space-y-10">
           {groupedCategories.map(({ category, meta, items }) => {
             const CategoryIcon = meta.icon || Code2;
             const isExpanded = !!expandedCategories[category];
@@ -322,18 +322,18 @@ const CertificationsSection = () => {
                 {/* Category Group Header Label with Collapse / Expand Toggle */}
                 <div
                   onClick={() => toggleCategory(category)}
-                  className="flex items-center justify-between pb-2.5 border-b border-border/60 cursor-pointer group/cat-header select-none">
-                  <div className="flex items-center gap-2.5">
+                  className="flex items-center justify-between pb-2.5 border-b border-border/60 cursor-pointer group/cat-header select-none gap-2">
+                  <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                     <div
-                      className={`p-1.5 rounded-lg border transition-transform duration-200 group-hover/cat-header:scale-105 ${meta.badgeClass}`}>
-                      <CategoryIcon size={16} />
+                      className={`p-1.5 rounded-lg border transition-transform duration-200 group-hover/cat-header:scale-105 shrink-0 ${meta.badgeClass}`}>
+                      <CategoryIcon size={15} />
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-sm sm:text-base font-bold text-foreground uppercase tracking-wider group-hover/cat-header:text-foreground/80 transition-colors">
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                        <h3 className="text-xs sm:text-base font-bold text-foreground uppercase tracking-wider group-hover/cat-header:text-foreground/80 transition-colors truncate">
                           {meta.label}
                         </h3>
-                        <span className="text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-foreground/5 text-foreground/70 border border-border/40">
+                        <span className="text-[9px] sm:text-[11px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full bg-foreground/5 text-foreground/70 border border-border/40 shrink-0">
                           {items.length} {items.length === 1 ? "Credential" : "Credentials"}
                         </span>
                       </div>
@@ -353,14 +353,17 @@ const CertificationsSection = () => {
                       toggleCategory(category);
                     }}
                     aria-expanded={isExpanded}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-xl border border-border/80 bg-foreground/5 hover:bg-foreground/10 text-foreground transition-all cursor-pointer shadow-2xs shrink-0">
-                    <span>
+                    className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-semibold px-2.5 sm:px-3.5 py-1.5 rounded-xl border border-border/80 bg-foreground/5 hover:bg-foreground/10 text-foreground transition-all cursor-pointer shadow-2xs shrink-0">
+                    <span className="hidden sm:inline">
                       {isExpanded
                         ? "Collapse"
                         : `View ${items.length} ${items.length === 1 ? "Certificate" : "Certificates"}`}
                     </span>
+                    <span className="sm:hidden">
+                      {isExpanded ? "Hide" : `View (${items.length})`}
+                    </span>
                     <ChevronDown
-                      size={14}
+                      size={13}
                       className={`transition-transform duration-300 ${
                         isExpanded ? "rotate-180" : ""
                       }`}
@@ -374,9 +377,9 @@ const CertificationsSection = () => {
                     {items.map((cert) => (
                       <div
                         key={cert.id}
-                        className="cert-list-item rounded-2xl border border-border/80 bg-card p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 text-left transition-all duration-300 hover:border-foreground/35 shadow-2xs hover:shadow-sm">
+                        className="cert-list-item rounded-2xl border border-border/80 bg-card p-3.5 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-3.5 sm:gap-4 text-left transition-all duration-300 hover:border-foreground/35 shadow-2xs hover:shadow-sm">
                         {/* Left Side: Thumbnail + Info */}
-                        <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
+                        <div className="flex flex-col xs:flex-row items-start xs:items-center gap-3 sm:gap-4 flex-1 min-w-0 w-full">
                           {/* Uncropped Certificate Thumbnail */}
                           {cert.image && (
                             <div
@@ -399,7 +402,7 @@ const CertificationsSection = () => {
                                   });
                                 }
                               }}
-                              className="group/thumb relative w-24 sm:w-28 md:w-32 aspect-[16/10] shrink-0 rounded-xl overflow-hidden border border-border/60 bg-foreground/[0.02] p-1.5 flex items-center justify-center cursor-pointer hover:border-foreground/30 transition-colors">
+                              className="group/thumb relative w-full xs:w-28 sm:w-28 md:w-32 aspect-[16/10] shrink-0 rounded-xl overflow-hidden border border-border/60 bg-foreground/[0.02] p-1.5 flex items-center justify-center cursor-pointer hover:border-foreground/30 transition-colors">
                               <img
                                 src={cert.image}
                                 alt={cert.alt || cert.title}
@@ -414,26 +417,26 @@ const CertificationsSection = () => {
                           )}
 
                           {/* Text Details */}
-                          <div className="flex-1 min-w-0">
+                          <div className="flex-1 min-w-0 w-full">
                             {/* Top Badges & Meta */}
                             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1.5">
                               {/* Explicit Category Label Badge */}
                               <span
-                                className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${getCategoryBadge(
+                                className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 sm:px-2.5 py-0.5 rounded-full border ${getCategoryBadge(
                                   cert.category
                                 )}`}>
                                 {cert.category}
                               </span>
                               {/* Credential Type Badge */}
                               <span
-                                className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${getTypeBadge(
+                                className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 sm:px-2.5 py-0.5 rounded-full border ${getTypeBadge(
                                   cert.type
                                 )}`}>
                                 {cert.type}
                               </span>
                               {/* Official Credential ID */}
                               {cert.certificateId && (
-                                <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground bg-foreground/5 px-2 py-0.5 rounded-full border border-border/50">
+                                <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground bg-foreground/5 px-2 py-0.5 rounded-full border border-border/50 truncate max-w-[180px]">
                                   ID: {cert.certificateId}
                                 </span>
                               )}
@@ -447,7 +450,7 @@ const CertificationsSection = () => {
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-base sm:text-lg font-bold tracking-tight text-foreground leading-snug">
+                            <h3 className="text-sm xs:text-base sm:text-lg font-bold tracking-tight text-foreground leading-snug">
                               {cert.title}
                             </h3>
 
@@ -462,7 +465,7 @@ const CertificationsSection = () => {
                                 {cert.covers.map((c, i) => (
                                   <span
                                     key={i}
-                                    className="text-[10px] font-medium text-foreground/75 bg-foreground/5 px-2 py-0.5 rounded border border-border/40">
+                                    className="text-[9px] xs:text-[10px] font-medium text-foreground/75 bg-foreground/5 px-1.5 xs:px-2 py-0.5 rounded border border-border/40">
                                     {c}
                                   </span>
                                 ))}
@@ -472,7 +475,7 @@ const CertificationsSection = () => {
                         </div>
 
                         {/* Right Side: Date & Verify / Copy Action */}
-                        <div className="flex items-center justify-between md:justify-end gap-3 sm:gap-4 shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-border/40">
+                        <div className="flex items-center justify-between md:justify-end gap-3 sm:gap-4 shrink-0 w-full md:w-auto pt-2.5 md:pt-0 border-t md:border-t-0 border-border/40">
                           {/* Date */}
                           <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
                             <Calendar size={13} />
@@ -556,13 +559,13 @@ const CertificationsSection = () => {
           role="dialog"
           aria-modal="true"
           onClick={() => setLightboxImage(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+          className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-5xl w-full max-h-[92vh] bg-card rounded-2xl border border-border overflow-hidden shadow-2xl p-4 sm:p-6 text-left flex flex-col">
+            className="relative max-w-5xl w-full max-h-[92dvh] bg-card rounded-2xl border border-border overflow-hidden shadow-2xl p-3 sm:p-6 text-left flex flex-col">
             {/* Header with Title and Close Button */}
-            <div className="flex items-center justify-between gap-3 mb-3 pb-2 border-b border-border/50">
-              <h4 className="text-sm sm:text-base font-bold text-foreground truncate pr-6">
+            <div className="flex items-center justify-between gap-3 mb-2.5 pb-2 border-b border-border/50">
+              <h4 className="text-xs sm:text-base font-bold text-foreground truncate pr-4">
                 {lightboxImage.title}
               </h4>
               <button
@@ -578,7 +581,7 @@ const CertificationsSection = () => {
               <img
                 src={lightboxImage.src}
                 alt={lightboxImage.alt}
-                className="max-h-[75vh] w-auto max-w-full object-contain rounded-lg drop-shadow-md"
+                className="max-h-[72dvh] sm:max-h-[75vh] w-auto max-w-full object-contain rounded-lg drop-shadow-md"
               />
             </div>
           </div>

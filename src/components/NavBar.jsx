@@ -40,6 +40,28 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock scroll and handle escape key when mobile menu is active
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setIsMenuOpen(false);
+    };
+
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+      if (window.lenis) window.lenis.stop();
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "unset";
+      if (window.lenis) window.lenis.start();
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+      if (window.lenis) window.lenis.start();
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
   const toggleTheme = () => {
     if (isDarkMode) {
       document.documentElement.classList.remove("dark");
@@ -75,14 +97,17 @@ const NavBar = () => {
     e.preventDefault();
     setIsMenuOpen(false);
 
-    if (window.lenis) {
-      window.lenis.scrollTo(href);
-    } else {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+    // Give state a tick to unlock scroll
+    setTimeout(() => {
+      if (window.lenis) {
+        window.lenis.scrollTo(href);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
-    }
+    }, 50);
   };
 
   return (
@@ -90,13 +115,13 @@ const NavBar = () => {
       ref={containerRef}
       className={cn(
         "fixed w-full z-40 transition-all duration-300 border-b border-transparent bg-transparent",
-        isScrolled ? "py-3.5 bg-background/90 border-border backdrop-blur-md" : "py-5"
+        isScrolled ? "py-3 bg-background/90 border-border backdrop-blur-md shadow-xs" : "py-4 sm:py-5"
       )}>
       <div className="container flex items-center justify-between">
         <a
           href="#hero"
           onClick={(e) => handleNavClick(e, "#hero")}
-          className="nav-logo text-lg font-bold tracking-tight text-foreground flex items-center">
+          className="nav-logo text-base sm:text-lg font-bold tracking-tight text-foreground flex items-center py-1">
           <span className="relative z-10">
             <span className="text-foreground">Himanshu</span>
             <span className="text-muted-foreground font-normal">.dev</span>
@@ -136,28 +161,37 @@ const NavBar = () => {
           </button>
         </div>
 
-        {/* mobile nav  */}
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}>
-          {isMenuOpen ? <X size={20} /> : <MenuIcon size={20} />}
-        </button>
+        {/* mobile actions (theme toggle + menu button) */}
+        <div className="flex md:hidden items-center gap-2 z-50">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="p-2 rounded-lg border border-border/70 bg-card/70 text-foreground/75 hover:text-foreground transition-colors focus:outline-none">
+            {isDarkMode ? <Sun size={17} className="text-yellow-400" /> : <Moon size={17} />}
+          </button>
 
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="p-2 rounded-lg border border-border/70 bg-card/70 text-foreground focus:outline-none"
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}>
+            {isMenuOpen ? <X size={20} /> : <MenuIcon size={20} />}
+          </button>
+        </div>
+
+        {/* Full-screen mobile menu drawer */}
         <div
           className={cn(
-            "fixed min-h-screen inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-300",
-            "md:hidden ",
+            "fixed inset-0 min-h-dvh bg-background/98 backdrop-blur-xl z-40 flex flex-col items-center justify-start overflow-y-auto py-24 px-6 transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           )}>
-          <div className="flex flex-col items-center space-y-7 text-lg font-medium">
+          <div className="w-full max-w-xs flex flex-col items-center space-y-3.5 my-auto">
             {navItems.map((item, key) => (
               <a
                 href={item.href}
                 key={key}
-                className="text-foreground/70 hover:text-foreground transition-colors duration-300 uppercase tracking-wider text-sm font-semibold"
+                className="w-full text-center py-2.5 px-4 rounded-xl text-foreground/75 hover:text-foreground hover:bg-foreground/5 active:bg-foreground/10 transition-colors uppercase tracking-wider text-sm font-bold"
                 onClick={(e) => handleNavClick(e, item.href)}>
                 {item.name}
               </a>
@@ -168,20 +202,11 @@ const NavBar = () => {
               href={personalData.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/80 hover:text-foreground transition-colors duration-300 uppercase tracking-wider text-sm font-semibold flex items-center gap-1.5"
+              className="w-full text-center py-2.5 px-4 rounded-xl border border-border bg-foreground/5 hover:bg-foreground/10 text-foreground transition-colors uppercase tracking-wider text-sm font-bold flex items-center justify-center gap-1.5 mt-2"
               onClick={() => setIsMenuOpen(false)}>
-              <span>Resume</span>
-              <ArrowUpRight size={14} />
+              <span>View Resume</span>
+              <ArrowUpRight size={15} />
             </a>
-
-            {/* Theme toggle in mobile menu */}
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="mt-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-foreground/60 hover:text-foreground transition-colors duration-300 focus:outline-none">
-              {isDarkMode ? <Sun className="h-4 w-4 text-yellow-400" /> : <Moon className="h-4 w-4" />}
-              {isDarkMode ? "Light Mode" : "Dark Mode"}
-            </button>
           </div>
         </div>
       </div>

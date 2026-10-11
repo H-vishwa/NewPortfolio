@@ -58,15 +58,15 @@ const ContactSection = () => {
               <span className="text-xs uppercase font-bold tracking-widest text-foreground/50 mb-2 inline-block">
                 Get In Touch
               </span>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-foreground leading-[0.95] mb-4 select-none">
+              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-foreground leading-[0.95] mb-4 select-none">
                 Let's talk.
               </h2>
-              <p className="text-sm sm:text-base text-foreground/75 font-normal leading-relaxed max-w-md mb-8">
+              <p className="text-xs xs:text-sm sm:text-base text-foreground/75 font-normal leading-relaxed max-w-md mb-6 sm:mb-8">
                 I'm actively looking for full-time frontend and full-stack MERN roles as well as select freelance projects. Connect directly through email, phone, or LinkedIn.
               </p>
 
               {/* Contact Details List */}
-              <div className="space-y-4">
+              <div className="space-y-3.5 sm:space-y-4">
                 <div className="flex items-center gap-3">
                   <span className="w-8 h-8 rounded-lg bg-foreground/5 border border-border flex items-center justify-center text-foreground/70 shrink-0">
                     <Mail size={15} />
@@ -114,21 +114,21 @@ const ContactSection = () => {
               <span className="text-[10px] uppercase font-bold tracking-widest text-foreground/40 block mb-3">
                 Social Profiles
               </span>
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
                 <a
                   href={personalData.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl border border-border bg-card hover:border-foreground/40 text-foreground flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 shadow-2xs">
-                  <Github size={18} />
+                  className="flex-1 xs:flex-initial justify-center px-4 py-2.5 rounded-xl border border-border bg-card hover:border-foreground/40 text-foreground flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 shadow-2xs">
+                  <Github size={17} />
                   <span>GitHub</span>
                 </a>
                 <a
                   href={personalData.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl border border-border bg-card hover:border-foreground/40 text-foreground flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 shadow-2xs">
-                  <Linkedin size={18} />
+                  className="flex-1 xs:flex-initial justify-center px-4 py-2.5 rounded-xl border border-border bg-card hover:border-foreground/40 text-foreground flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 shadow-2xs">
+                  <Linkedin size={17} />
                   <span>LinkedIn</span>
                 </a>
               </div>
@@ -136,7 +136,7 @@ const ContactSection = () => {
           </div>
 
           {/* Right Column: Visual Workspace Image */}
-          <div className="contact-image-container relative rounded-2xl overflow-hidden border border-border/80 bg-card shadow-sm group min-h-[360px] md:min-h-[440px] flex flex-col justify-end">
+          <div className="contact-image-container relative rounded-2xl overflow-hidden border border-border/80 bg-card shadow-sm group min-h-[260px] xs:min-h-[300px] sm:min-h-[360px] md:min-h-[440px] flex flex-col justify-end">
             <img
               src="/contact.webp"
               alt="Developer workspace"

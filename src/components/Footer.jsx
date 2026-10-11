@@ -34,11 +34,11 @@ export default function Footer() {
           {/* Left – Statement */}
           <div className="md:col-span-1 text-left">
             <h2
-              className="text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1] select-none text-left"
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1] select-none text-left"
               style={{ color: "#f5f5f5" }}>
               Building &amp;<br />Crafting Modern<br />Web Experiences.
             </h2>
-            <p className="text-xs text-white/50 mt-4 leading-relaxed font-normal">
+            <p className="text-xs text-white/50 mt-3 sm:mt-4 leading-relaxed font-normal">
               Specialized in scalable MERN architectures, responsive interfaces, and production-ready applications.
             </p>
           </div>
@@ -46,7 +46,7 @@ export default function Footer() {
           {/* Center – Quick Navigation Links */}
           <div className="text-left">
             <p
-              className="text-xs font-semibold uppercase tracking-widest mb-4"
+              className="text-xs font-semibold uppercase tracking-widest mb-3 sm:mb-4"
               style={{ color: "rgba(255,255,255,0.38)" }}>
               /Navigation
             </p>
@@ -55,7 +55,7 @@ export default function Footer() {
                 <a
                   key={href}
                   href={href}
-                  className="px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 no-underline"
+                  className="px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 no-underline"
                   style={{
                     border: "1px solid rgba(255,255,255,0.18)",
                     color: "rgba(255,255,255,0.75)",
@@ -81,11 +81,11 @@ export default function Footer() {
           <div className="text-left flex flex-col justify-between">
             <div>
               <p
-                className="text-xs font-semibold uppercase tracking-widest mb-4"
+                className="text-xs font-semibold uppercase tracking-widest mb-3 sm:mb-4"
                 style={{ color: "rgba(255,255,255,0.38)" }}>
                 /Status &amp; Availability
               </p>
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2 mb-2 sm:mb-3">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                 <span className="text-xs font-medium text-white/80">
                   {personalData.availability}
@@ -108,7 +108,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright row */}
-        <div className="py-5 flex items-center justify-between">
+        <div className="py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
           <p
             className="text-[10px] uppercase font-bold tracking-widest select-none"
             style={{ color: "rgba(255,255,255,0.25)" }}>
@@ -124,15 +124,15 @@ export default function Footer() {
 
       {/* Giant watermark */}
       <div
-        className="w-screen select-none pointer-events-none -mx-4"
+        className="w-full overflow-hidden select-none pointer-events-none"
         style={{ transform: "translateY(10%)" }}
         aria-hidden="true">
         <p
-          className="text-5xl sm:text-9xl md:text-[130px] lg:text-[175px] xl:text-[200px]"
+          className="text-4xl xs:text-6xl sm:text-9xl md:text-[130px] lg:text-[175px] xl:text-[200px]"
           style={{
             lineHeight: 0.85,
             letterSpacing: "-0.04em",
-            color: "rgba(255,255,255,0.10)",
+            color: "rgba(255,255,255,0.08)",
             fontWeight: 900,
             textTransform: "uppercase",
             whiteSpace: "nowrap",

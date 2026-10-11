@@ -146,18 +146,18 @@ export default function ProjectCaseStudy() {
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight leading-[1.05] mb-4">
+          <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight leading-[1.05] mb-4">
             {project.title}
           </h1>
 
-          <p className="text-base sm:text-xl text-foreground/80 font-normal max-w-3xl leading-relaxed mb-8">
+          <p className="text-sm xs:text-base sm:text-xl text-foreground/80 font-normal max-w-3xl leading-relaxed mb-6 sm:mb-8">
             {project.tagline || project.description}
           </p>
 
           {/* Quick Meta Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl border border-border/80 bg-card/60 backdrop-blur-xs">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 p-3.5 sm:p-5 rounded-2xl border border-border/80 bg-card/60 backdrop-blur-xs">
             <div className="text-left">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-foreground/50 block mb-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-foreground/50 block mb-0.5 sm:mb-1">
                 Role
               </span>
               <p className="text-xs sm:text-sm font-semibold text-foreground">
@@ -165,7 +165,7 @@ export default function ProjectCaseStudy() {
               </p>
             </div>
             <div className="text-left">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-foreground/50 block mb-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-foreground/50 block mb-0.5 sm:mb-1">
                 Timeline
               </span>
               <p className="text-xs sm:text-sm font-semibold text-foreground">
@@ -173,7 +173,7 @@ export default function ProjectCaseStudy() {
               </p>
             </div>
             <div className="text-left">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-foreground/50 block mb-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-foreground/50 block mb-0.5 sm:mb-1">
                 Focus Area
               </span>
               <p className="text-xs sm:text-sm font-semibold text-foreground">
@@ -181,7 +181,7 @@ export default function ProjectCaseStudy() {
               </p>
             </div>
             <div className="text-left">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-foreground/50 block mb-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-foreground/50 block mb-0.5 sm:mb-1">
                 Deliverable
               </span>
               <p className="text-xs sm:text-sm font-semibold text-foreground">
@@ -192,7 +192,7 @@ export default function ProjectCaseStudy() {
         </div>
 
         {/* Hero Image Showcase */}
-        <div className="mb-14 sm:mb-20">
+        <div className="mb-10 sm:mb-20">
           <div className="relative group overflow-hidden rounded-2xl border border-border/80 bg-card shadow-xl">
             <img
               src={project.imageUrl}
@@ -204,7 +204,7 @@ export default function ProjectCaseStudy() {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute bottom-4 right-4 bg-black/75 hover:bg-black/90 backdrop-blur-md text-white px-4 py-2 rounded-xl text-xs font-semibold tracking-wider uppercase inline-flex items-center gap-1.5 transition-all shadow-md">
+                className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-black/75 hover:bg-black/90 backdrop-blur-md text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold tracking-wider uppercase inline-flex items-center gap-1.5 transition-all shadow-md">
                 <span>View Live Site</span>
                 <ArrowUpRight size={13} />
               </a>
@@ -213,18 +213,18 @@ export default function ProjectCaseStudy() {
         </div>
 
         {/* Section: Overview */}
-        <section className="mb-14 sm:mb-20 text-left">
-          <div className="mb-6">
-            <span className="text-xs uppercase font-bold tracking-widest text-foreground/50 block mb-2">
+        <section className="mb-10 sm:mb-20 text-left">
+          <div className="mb-4 sm:mb-6">
+            <span className="text-xs uppercase font-bold tracking-widest text-foreground/50 block mb-1 sm:mb-2">
               01 // Overview
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight">
+            <h2 className="text-xl sm:text-3xl font-extrabold uppercase tracking-tight">
               Project In Depth
             </h2>
           </div>
 
-          <div className="rounded-2xl border border-border/80 bg-card p-6 sm:p-8">
-            <p className="text-sm sm:text-base text-foreground/85 leading-relaxed font-normal">
+          <div className="rounded-2xl border border-border/80 bg-card p-4 sm:p-8">
+            <p className="text-xs sm:text-base text-foreground/85 leading-relaxed font-normal">
               {project.overview}
             </p>
           </div>
@@ -464,21 +464,21 @@ export default function ProjectCaseStudy() {
         )}
 
         {/* Action Banner */}
-        <section className="mb-16 sm:mb-24 rounded-3xl border border-border/80 bg-card p-8 sm:p-12 text-center relative overflow-hidden">
+        <section className="mb-14 sm:mb-24 rounded-3xl border border-border/80 bg-card p-6 sm:p-12 text-center relative overflow-hidden">
           <div className="max-w-2xl mx-auto relative z-10">
-            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight mb-4">
+            <h2 className="text-xl xs:text-2xl sm:text-4xl font-extrabold uppercase tracking-tight mb-3 sm:mb-4">
               Explore {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-foreground/70 mb-8 leading-relaxed">
+            <p className="text-xs sm:text-sm text-foreground/70 mb-6 sm:mb-8 leading-relaxed">
               Experience the deployed application in your browser or inspect the source repository on GitHub.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
               {project.demoUrl && (
                 <a
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-foreground text-background font-semibold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity shadow-sm">
+                  className="w-full xs:w-auto justify-center inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-foreground text-background font-semibold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity shadow-sm">
                   <span>Launch Live Demo</span>
                   <ExternalLink size={14} />
                 </a>
@@ -488,7 +488,7 @@ export default function ProjectCaseStudy() {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-card text-foreground font-semibold text-xs uppercase tracking-wider hover:bg-foreground/5 transition-colors">
+                  className="w-full xs:w-auto justify-center inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-card text-foreground font-semibold text-xs uppercase tracking-wider hover:bg-foreground/5 transition-colors">
                   <Github size={14} />
                   <span>View Repository</span>
                 </a>
@@ -498,24 +498,24 @@ export default function ProjectCaseStudy() {
         </section>
 
         {/* Next / Previous Project Navigation */}
-        <section className="pt-8 border-t border-border/60">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/50 block mb-4 text-center sm:text-left">
+        <section className="pt-6 sm:pt-8 border-t border-border/60">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/50 block mb-3 sm:mb-4 text-center sm:text-left">
             Continue Reading
           </span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {/* Previous Project */}
             <Link
               to={`/projects/${prevProject.slug}`}
-              className="group rounded-2xl border border-border/80 bg-card p-5 flex items-center justify-between hover:border-foreground/30 transition-all text-left">
+              className="group rounded-2xl border border-border/80 bg-card p-4 sm:p-5 flex items-center justify-between hover:border-foreground/30 transition-all text-left">
               <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full border border-border flex items-center justify-center bg-card group-hover:border-foreground/30 transition-colors">
+                <span className="w-8 h-8 rounded-full border border-border flex items-center justify-center bg-card group-hover:border-foreground/30 transition-colors shrink-0">
                   <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-0.5" />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <span className="text-[10px] uppercase font-bold tracking-wider text-foreground/50 block">
                     Previous Project
                   </span>
-                  <span className="text-sm font-bold text-foreground">
+                  <span className="text-xs sm:text-sm font-bold text-foreground truncate block">
                     {prevProject.title}
                   </span>
                 </div>
@@ -525,17 +525,17 @@ export default function ProjectCaseStudy() {
             {/* Next Project */}
             <Link
               to={`/projects/${nextProject.slug}`}
-              className="group rounded-2xl border border-border/80 bg-card p-5 flex items-center justify-between hover:border-foreground/30 transition-all text-right">
+              className="group rounded-2xl border border-border/80 bg-card p-4 sm:p-5 flex items-center justify-between hover:border-foreground/30 transition-all text-right">
               <div className="flex items-center justify-end gap-3 w-full">
-                <div>
+                <div className="min-w-0">
                   <span className="text-[10px] uppercase font-bold tracking-wider text-foreground/50 block">
                     Next Project
                   </span>
-                  <span className="text-sm font-bold text-foreground">
+                  <span className="text-xs sm:text-sm font-bold text-foreground truncate block">
                     {nextProject.title}
                   </span>
                 </div>
-                <span className="w-8 h-8 rounded-full border border-border flex items-center justify-center bg-card group-hover:border-foreground/30 transition-colors">
+                <span className="w-8 h-8 rounded-full border border-border flex items-center justify-center bg-card group-hover:border-foreground/30 transition-colors shrink-0">
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>

@@ -170,7 +170,7 @@ const HeroSection = () => {
       {/* Hero Section */}
       <section
         id="hero"
-        className="min-h-screen relative z-20 flex flex-col justify-between px-4 sm:px-6 md:px-10 bg-background select-none pt-24 pb-8">
+        className="min-h-[90dvh] sm:min-h-screen relative z-20 flex flex-col justify-between px-3 xs:px-4 sm:px-6 md:px-10 bg-background select-none pt-20 sm:pt-24 pb-8">
         
         {/* Main 2-Column Hero Grid: Content on Left, Image on Right */}
         <div className="container mx-auto max-w-6xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 items-center my-auto">
@@ -179,8 +179,8 @@ const HeroSection = () => {
           <div className="md:col-span-7 flex flex-col items-start text-left z-20">
             
             {/* Row 1: MERN STACK + Sparkle */}
-            <h1 className="text-4xl sm:text-6xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-black uppercase tracking-tighter text-foreground flex items-center leading-[0.95] mb-1 sm:mb-2 select-none">
-              <span className="hero-decor text-2xl sm:text-3xl md:text-5xl mr-2 sm:mr-3 text-foreground/50 animate-pulse-subtle opacity-0 translate-y-4">
+            <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-black uppercase tracking-tighter text-foreground flex flex-wrap items-center leading-[0.95] mb-1 sm:mb-2 select-none">
+              <span className="hero-decor text-xl xs:text-2xl sm:text-3xl md:text-5xl mr-1.5 xs:mr-2 sm:mr-3 text-foreground/50 animate-pulse-subtle opacity-0 translate-y-4">
                 ✦
               </span>
               <span className="inline-flex">
@@ -196,7 +196,7 @@ const HeroSection = () => {
             </h1>
 
             {/* Row 2: DEVELOPER + Lightning */}
-            <h1 className="text-4xl sm:text-6xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-black uppercase tracking-tighter text-foreground flex items-center leading-[0.95] mb-4 sm:mb-6 select-none">
+            <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-black uppercase tracking-tighter text-foreground flex flex-wrap items-center leading-[0.95] mb-4 sm:mb-6 select-none">
               <span className="inline-flex">
                 {personalData.titleSuffix.split("").map((char, index) => (
                   <span
@@ -207,39 +207,39 @@ const HeroSection = () => {
                   </span>
                 ))}
               </span>
-              <span className="hero-decor text-2xl sm:text-3xl md:text-5xl ml-2 sm:ml-3 text-foreground/50 opacity-0 translate-y-4">
+              <span className="hero-decor text-xl xs:text-2xl sm:text-3xl md:text-5xl ml-1.5 xs:mr-2 sm:ml-3 text-foreground/50 opacity-0 translate-y-4">
                 ⚡
               </span>
             </h1>
 
             {/* One-Line Value Proposition Directly Under Headline */}
-            <p className="hero-decor text-sm sm:text-base md:text-lg text-foreground/80 max-w-lg font-medium mb-6 sm:mb-8 text-left leading-relaxed opacity-0 translate-y-4">
+            <p className="hero-decor text-xs xs:text-sm sm:text-base md:text-lg text-foreground/80 max-w-lg font-medium mb-6 sm:mb-8 text-left leading-relaxed opacity-0 translate-y-4">
               {personalData.valueProposition}
             </p>
 
             {/* Call to Action Buttons */}
-            <div className="hero-decor flex flex-wrap items-center gap-3 sm:gap-4 opacity-0 translate-y-4">
-              <a href="#contact" onClick={(e) => handleScrollTo(e, "#contact")}>
-                <button className="cosmic-button uppercase tracking-wider text-xs font-bold px-6 sm:px-7 py-3 cursor-pointer shadow-md">
+            <div className="hero-decor flex flex-wrap items-center gap-2.5 sm:gap-4 opacity-0 translate-y-4 w-full sm:w-auto">
+              <a href="#contact" onClick={(e) => handleScrollTo(e, "#contact")} className="w-full xs:w-auto">
+                <button className="cosmic-button uppercase tracking-wider text-xs font-bold px-6 sm:px-7 py-3 cursor-pointer shadow-md w-full xs:w-auto text-center">
                   Hire Me
                 </button>
               </a>
-              <a href="#projects" onClick={(e) => handleScrollTo(e, "#projects")}>
-                <button className="px-6 sm:px-7 py-3 rounded-lg border border-border text-foreground font-bold text-xs uppercase tracking-wider transition-colors duration-300 hover:bg-foreground/5 bg-card cursor-pointer">
+              <a href="#projects" onClick={(e) => handleScrollTo(e, "#projects")} className="w-full xs:w-auto">
+                <button className="w-full xs:w-auto px-6 sm:px-7 py-3 rounded-lg border border-border text-foreground font-bold text-xs uppercase tracking-wider transition-colors duration-300 hover:bg-foreground/5 bg-card cursor-pointer text-center">
                   View My Work
                 </button>
               </a>
             </div>
 
             {/* Core Tech Stack Badges */}
-            <div className="hero-decor mt-6 sm:mt-7 flex flex-wrap items-center gap-2 opacity-0 translate-y-4 select-none">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-foreground/45 mr-1">
+            <div className="hero-decor mt-6 sm:mt-7 flex flex-wrap items-center gap-1.5 sm:gap-2 opacity-0 translate-y-4 select-none">
+              <span className="text-[10px] xs:text-[11px] font-bold uppercase tracking-wider text-foreground/45 mr-1">
                 Core Stack:
               </span>
               {["React", "Next.js", "Node.js", "Python", "SQL", "Data Analytics"].map((tech) => (
                 <span
                   key={tech}
-                  className="text-[11px] font-semibold text-foreground/75 bg-foreground/5 border border-border/60 px-2.5 py-0.5 rounded-full backdrop-blur-xs">
+                  className="text-[10px] xs:text-[11px] font-semibold text-foreground/75 bg-foreground/5 border border-border/60 px-2 xs:px-2.5 py-0.5 rounded-full backdrop-blur-xs">
                   {tech}
                 </span>
               ))}
@@ -248,9 +248,9 @@ const HeroSection = () => {
           </div>
 
           {/* Right Column (5 cols): Beautiful Profile Image */}
-          <div className="md:col-span-5 flex justify-center items-center relative w-full h-[360px] sm:h-[420px] md:h-[480px]">
+          <div className="md:col-span-5 flex justify-center items-center relative w-full h-[320px] xs:h-[360px] sm:h-[420px] md:h-[480px]">
             <div
-              className="hero-profile-container absolute top-1/2 left-1/2 w-48 h-64 sm:w-56 sm:h-76 md:w-64 md:h-88 opacity-0 shadow-2xl rounded-3xl overflow-hidden border border-foreground/15 bg-card/50 backdrop-blur-xs"
+              className="hero-profile-container absolute top-1/2 left-1/2 w-44 h-60 xs:w-48 xs:h-64 sm:w-56 sm:h-76 md:w-64 md:h-88 opacity-0 shadow-2xl rounded-3xl overflow-hidden border border-foreground/15 bg-card/50 backdrop-blur-xs"
               style={{ zIndex: 10 }}>
               <img
                 src="/ME.webp"
@@ -267,9 +267,9 @@ const HeroSection = () => {
 
         {/* Bottom Bar: Location & Availability & Developing Since */}
         <div className="container mx-auto max-w-6xl w-full flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-border/30">
-          <div className="hero-decor flex items-center gap-2 text-foreground/80 opacity-0 translate-y-4 select-none bg-card/60 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-border/60">
+          <div className="hero-decor flex items-center gap-2 text-foreground/80 opacity-0 translate-y-4 select-none bg-card/60 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-border/60 max-w-full">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span className="text-[10px] sm:text-xs font-semibold tracking-wide">
+            <span className="text-[10px] sm:text-xs font-semibold tracking-wide truncate">
               {personalData.locationAvailability}
             </span>
           </div>
@@ -286,14 +286,14 @@ const HeroSection = () => {
       {/* About Section */}
       <section
         id="about"
-        className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 relative z-10 bg-background overflow-hidden select-none border-t border-border/30"
+        className="py-14 sm:py-20 md:py-28 px-4 sm:px-6 relative z-10 bg-background overflow-hidden select-none border-t border-border/30"
       >
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
             
             {/* Column 1 (5 cols): Scrolled Image Placeholder (Lands here from Hero) */}
             <div className="md:col-span-5 flex justify-center items-center">
-              <div className="about-image-placeholder w-48 h-64 sm:w-56 sm:h-76 md:w-64 md:h-88 rounded-3xl bg-foreground/5 border border-border/40 relative flex items-center justify-center overflow-hidden shadow-md">
+              <div className="about-image-placeholder w-44 h-60 xs:w-48 xs:h-64 sm:w-56 sm:h-76 md:w-64 md:h-88 rounded-3xl bg-foreground/5 border border-border/40 relative flex items-center justify-center overflow-hidden shadow-md">
                 {/* Fallback image for users with prefers-reduced-motion */}
                 {isReducedMotion && (
                   <img
@@ -310,28 +310,28 @@ const HeroSection = () => {
               <span className="text-xs uppercase font-bold tracking-widest text-foreground/50">
                 About Me
               </span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-foreground leading-none">
+              <h3 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-foreground leading-tight">
                 {personalData.aboutHeading}
               </h3>
               
-              <div className="space-y-3 text-sm sm:text-base md:text-lg font-normal leading-relaxed text-foreground/80">
+              <div className="space-y-3 text-xs xs:text-sm sm:text-base md:text-lg font-normal leading-relaxed text-foreground/80">
                 {personalData.aboutParagraphs.map((para, idx) => (
                   <p key={idx}>{para}</p>
                 ))}
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2 w-full sm:w-auto">
                 <a
                   href="#contact"
                   onClick={(e) => handleScrollTo(e, "#contact")}
-                  className="cosmic-button uppercase tracking-wider text-xs font-semibold px-6 py-2.5 text-center cursor-pointer">
+                  className="cosmic-button uppercase tracking-wider text-xs font-semibold px-6 py-2.5 text-center cursor-pointer w-full xs:w-auto">
                   Hire Me
                 </a>
                 <a
                   href={personalData.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-2.5 rounded-lg border border-border text-foreground font-semibold text-xs transition-colors duration-300 hover:bg-foreground/5 text-center uppercase tracking-wider">
+                  className="w-full xs:w-auto px-6 py-2.5 rounded-lg border border-border text-foreground font-semibold text-xs transition-colors duration-300 hover:bg-foreground/5 text-center uppercase tracking-wider block xs:inline-block">
                   Download CV
                 </a>
               </div>

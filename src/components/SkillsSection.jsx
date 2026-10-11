@@ -52,7 +52,7 @@ const TechStackGrid = () => {
             <span className="skills-heading inline-block text-xs uppercase font-bold tracking-widest text-foreground/50 opacity-0 -translate-y-6 mb-2">
               Expertise &amp; Technologies
             </span>
-            <h2 className="skills-heading text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tighter leading-[0.95] opacity-0 -translate-y-6">
+            <h2 className="skills-heading text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tighter leading-[0.95] opacity-0 -translate-y-6">
               My <br className="hidden sm:inline" /> Skills
             </h2>
           </div>
@@ -63,12 +63,12 @@ const TechStackGrid = () => {
         </div>
 
         {/* Categorized Skills Grid */}
-        <div className="skills-container space-y-8 sm:space-y-10">
+        <div className="skills-container space-y-6 sm:space-y-10">
           {skillsData.map((categoryGroup) => (
             <div key={categoryGroup.category} className="skill-category-block text-left">
               {/* Category Title */}
-              <div className="flex items-center gap-2 mb-3 sm:mb-4">
-                <span className="text-[11px] sm:text-xs uppercase font-bold tracking-widest text-foreground/70">
+              <div className="flex items-center gap-2 mb-2.5 sm:mb-4">
+                <span className="text-[10px] xs:text-[11px] sm:text-xs uppercase font-bold tracking-widest text-foreground/70">
                   {categoryGroup.category}
                 </span>
                 <span className="h-px flex-1 bg-border/60" />
@@ -78,17 +78,17 @@ const TechStackGrid = () => {
               </div>
 
               {/* Cards Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-3.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 xs:gap-2.5 sm:gap-3.5">
                 {categoryGroup.skills.map((skill) => (
                   <a
                     key={skill.name}
                     href={skill.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl border border-border/80 bg-card hover:border-foreground/35 hover:-translate-y-0.5 transition-all duration-300 shadow-2xs hover:shadow-sm"
+                    className="group relative flex items-center gap-2 xs:gap-2.5 sm:gap-3 p-2 xs:p-2.5 sm:p-3 rounded-xl border border-border/80 bg-card hover:border-foreground/35 hover:-translate-y-0.5 transition-all duration-300 shadow-2xs hover:shadow-sm"
                     title={`${skill.name} documentation`}
                   >
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 flex items-center justify-center p-1 rounded-lg bg-foreground/5 group-hover:bg-foreground/10 transition-colors">
+                    <div className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 shrink-0 flex items-center justify-center p-1 rounded-lg bg-foreground/5 group-hover:bg-foreground/10 transition-colors">
                       <img
                         src={skill.icon}
                         alt={skill.name}
@@ -98,7 +98,7 @@ const TechStackGrid = () => {
                         }`}
                       />
                     </div>
-                    <span className="text-xs sm:text-sm font-semibold tracking-tight text-foreground/85 group-hover:text-foreground transition-colors truncate">
+                    <span className="text-[11px] xs:text-xs sm:text-sm font-semibold tracking-tight text-foreground/85 group-hover:text-foreground transition-colors truncate">
                       {skill.name}
                     </span>
                   </a>
