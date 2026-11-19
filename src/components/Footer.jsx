@@ -39,7 +39,7 @@ export default function Footer() {
               Building &amp;<br />Crafting Modern<br />Web Experiences.
             </h2>
             <p className="text-xs text-white/50 mt-3 sm:mt-4 leading-relaxed font-normal">
-              Specialized in scalable MERN architectures, responsive interfaces, and production-ready applications.
+              Specialized in scalable MERN/Next.js architectures, backend optimization, and robust QA engineering.
             </p>
           </div>
 

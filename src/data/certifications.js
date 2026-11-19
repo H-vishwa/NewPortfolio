@@ -13,6 +13,9 @@ export const certifications = [
     credentialUrl: "https://ude.my/UC-24e36b3a-5d54-43e7-afff-e40d91f50427",
     image: "/certificates/udemy-fullstack-bootcamp.webp",
     alt: "Udemy certificate: The Complete Full-Stack Web Development Bootcamp, July 2025",
+    description:
+      "Comprehensive training in frontend and backend engineering utilizing the MERN stack, REST APIs, authentication protocols, and modern deployment pipelines.",
+    covers: ["MERN Stack", "REST APIs", "Authentication Protocols", "Modern Deployment Pipelines"],
   },
   {
     id: "oneroadmap-fs-simulation",
@@ -27,6 +30,9 @@ export const certifications = [
     credentialUrl: "https://www.oneroadmap.io/verify/ORA-FS-H0D1Z6",
     image: "/certificates/oneroadmap-fs-simulation.webp",
     alt: "OneRoadmap Full-Stack Engineer Job Simulation, September 2026",
+    description:
+      "Practical execution of production-level workflows focusing on debugging complex frontend react components and designing fault-tolerant backend REST APIs.",
+    covers: ["React Component Debugging", "Fault-Tolerant REST APIs", "State Synchronization", "Idempotent Design"],
   },
   {
     id: "oneroadmap-javascript",

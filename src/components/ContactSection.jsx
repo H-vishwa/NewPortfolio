@@ -62,7 +62,7 @@ const ContactSection = () => {
                 Let's talk.
               </h2>
               <p className="text-xs xs:text-sm sm:text-base text-foreground/75 font-normal leading-relaxed max-w-md mb-6 sm:mb-8">
-                I'm actively looking for full-time frontend and full-stack MERN roles as well as select freelance projects. Connect directly through email, phone, or LinkedIn.
+                I'm actively looking for full-time Full-Stack &amp; QA Engineering roles as well as select freelance projects. Connect directly through email, phone, or LinkedIn.
               </p>
 
               {/* Contact Details List */}

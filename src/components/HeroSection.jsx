@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +9,55 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
   const containerRef = useRef(null);
+  const titlePairs = personalData.titlePairs || [
+    { prefix: "FULL STACK", suffix: "DEVELOPER" },
+    { prefix: "FRONTEND", suffix: "ENGINEER" },
+    { prefix: "FULL STACK", suffix: "ENGINEER" },
+    { prefix: "FRONTEND", suffix: "DEVELOPER" },
+  ];
+  const [pairIndex, setPairIndex] = useState(0);
+  const currentPair = titlePairs[pairIndex];
+  const isInitialLoad = useRef(true);
+
+  useEffect(() => {
+    let intervalId;
+    const timeoutId = setTimeout(() => {
+      isInitialLoad.current = false;
+      intervalId = setInterval(() => {
+        gsap.to(".animated-title-letter", {
+          y: -18,
+          opacity: 0,
+          stagger: 0.02,
+          duration: 0.28,
+          ease: "power2.in",
+          onComplete: () => {
+            setPairIndex((prev) => (prev + 1) % titlePairs.length);
+          },
+        });
+      }, 3500);
+    }, 2200);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [titlePairs.length]);
+
+  useEffect(() => {
+    if (!isInitialLoad.current) {
+      gsap.fromTo(
+        ".animated-title-letter",
+        { y: 18, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.025,
+          duration: 0.45,
+          ease: "back.out(1.5)",
+        }
+      );
+    }
+  }, [pairIndex]);
 
   useGSAP(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -178,16 +227,16 @@ const HeroSection = () => {
           {/* Left Column (7 cols): Typography, Value Prop, Action Buttons */}
           <div className="md:col-span-7 flex flex-col items-start text-left z-20">
             
-            {/* Row 1: MERN STACK + Sparkle */}
+            {/* Row 1: Alternating FULL STACK / FRONTEND + Sparkle */}
             <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-black uppercase tracking-tighter text-foreground flex flex-wrap items-center leading-[0.95] mb-1 sm:mb-2 select-none">
               <span className="hero-decor text-xl xs:text-2xl sm:text-3xl md:text-5xl mr-1.5 xs:mr-2 sm:mr-3 text-foreground/50 animate-pulse-subtle opacity-0 translate-y-4">
                 ✦
               </span>
               <span className="inline-flex">
-                {personalData.titlePrefix.split("").map((char, index) => (
+                {currentPair.prefix.split("").map((char, index) => (
                   <span
-                    key={index}
-                    className="title-letter relative inline-block opacity-0 translate-y-8"
+                    key={`${currentPair.prefix}-${index}`}
+                    className="title-letter animated-title-letter relative inline-block opacity-0 translate-y-8"
                   >
                     {char === " " ? "\u00A0" : char}
                   </span>
@@ -195,15 +244,15 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            {/* Row 2: DEVELOPER + Lightning */}
+            {/* Row 2: Alternating DEVELOPER / ENGINEER + Lightning */}
             <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-black uppercase tracking-tighter text-foreground flex flex-wrap items-center leading-[0.95] mb-4 sm:mb-6 select-none">
               <span className="inline-flex">
-                {personalData.titleSuffix.split("").map((char, index) => (
+                {currentPair.suffix.split("").map((char, index) => (
                   <span
-                    key={index}
-                    className="title-letter relative inline-block opacity-0 translate-y-8"
+                    key={`${currentPair.suffix}-${index}`}
+                    className="title-letter animated-title-letter relative inline-block opacity-0 translate-y-8"
                   >
-                    {char}
+                    {char === " " ? "\u00A0" : char}
                   </span>
                 ))}
               </span>
@@ -236,7 +285,7 @@ const HeroSection = () => {
               <span className="text-[10px] xs:text-[11px] font-bold uppercase tracking-wider text-foreground/45 mr-1">
                 Core Stack:
               </span>
-              {["React", "Next.js", "Node.js", "Python", "SQL", "Data Analytics"].map((tech) => (
+              {["React.js", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "REST APIs"].map((tech) => (
                 <span
                   key={tech}
                   className="text-[10px] xs:text-[11px] font-semibold text-foreground/75 bg-foreground/5 border border-border/60 px-2 xs:px-2.5 py-0.5 rounded-full backdrop-blur-xs">

@@ -19,8 +19,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ExperienceSection = () => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const [freelanceExpanded, setFreelanceExpanded] = useState(false);
+  const [expandedWorkIds, setExpandedWorkIds] = useState({});
   const containerRef = useRef(null);
+
+  const toggleWorkExpanded = (id) => {
+    setExpandedWorkIds((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   const workExperiences = experiencesData.filter((item) => item.type === "work");
   const educationExperiences = experiencesData.filter((item) => item.type === "education");
@@ -105,7 +112,7 @@ const ExperienceSection = () => {
           </div>
 
           <p className="experience-header-item text-xs sm:text-sm text-foreground/60 max-w-xs md:text-right font-medium">
-            Academic qualifications paired with production freelance software development.
+            Academic qualifications paired with production full-stack engineering and data management.
           </p>
         </div>
 
@@ -157,12 +164,12 @@ const ExperienceSection = () => {
 
                   <div className="flex items-center gap-2 w-full sm:w-auto">
                     <button
-                      onClick={() => setFreelanceExpanded(!freelanceExpanded)}
+                      onClick={() => toggleWorkExpanded(item.id)}
                       className="w-full sm:w-auto justify-center px-3.5 py-2 sm:py-1.5 rounded-lg border border-border bg-foreground/5 hover:bg-foreground/10 text-foreground text-xs font-semibold uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer">
-                      <span>{freelanceExpanded ? "Hide Details" : "Expand Details"}</span>
+                      <span>{expandedWorkIds[item.id] ? "Hide Details" : "Expand Details"}</span>
                       <ChevronDown
                         size={14}
-                        className={`transition-transform duration-300 ${freelanceExpanded ? "rotate-180" : ""}`}
+                        className={`transition-transform duration-300 ${expandedWorkIds[item.id] ? "rotate-180" : ""}`}
                       />
                     </button>
                   </div>
@@ -188,7 +195,7 @@ const ExperienceSection = () => {
                 </div>
 
                 {/* Expandable Details Panel */}
-                {freelanceExpanded && (
+                {expandedWorkIds[item.id] && (
                   <div className="mt-4 pt-4 border-t border-border/60 animate-in fade-in slide-in-from-top-2 duration-300 space-y-3">
                     <h4 className="text-[11px] sm:text-xs uppercase font-bold tracking-widest text-foreground/60">
                       Key Highlights &amp; Responsibilities
@@ -220,7 +227,7 @@ const ExperienceSection = () => {
             <span className="h-px flex-1 bg-border/60 ml-2" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-stretch w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 items-stretch w-full">
             {educationExperiences.map((item) => (
               <div
                 key={item.id}

@@ -58,7 +58,7 @@ const TechStackGrid = () => {
           </div>
 
           <p className="skills-heading text-xs sm:text-sm text-foreground/60 max-w-xs md:text-right opacity-0 -translate-y-6 mt-2 md:mt-0 font-medium">
-            Production-tested stack specialized in full-stack engineering, data analytics, scalable architectures, and modern UI workflows.
+            Specialized in scalable MERN/Next.js architectures, backend optimization, REST API testing, and robust QA workflows.
           </p>
         </div>
 
