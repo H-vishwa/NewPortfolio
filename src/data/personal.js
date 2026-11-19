@@ -18,5 +18,5 @@ export const personalData = {
   githubUrl: "https://github.com/H-vishwa",
   linkedinUrl: "https://www.linkedin.com/in/himanshu-k-54aba5227/",
   resumeUrl:
-    "https://drive.google.com/file/d/1bAG_7blF3MfKfU-Tbc5s5oDcdj-jCOXd/view?usp=sharing",
+    "https://drive.google.com/file/d/1yH8g7AQjmRA8lMg57uCaREc_uy2WjRyK/view?usp=drive_link",
 };
